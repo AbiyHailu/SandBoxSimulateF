@@ -3,4 +3,7 @@
 html,
 body {
   font-family: sans-serif;
+  min-height: 100%;
+  height: auto !important; /* cross-browser */
+  height: 100%; /* cross-browser */
 }

@@ -21,6 +21,7 @@ export class MainComponent {
       } else {
         this.timeLeft = 60;
       }
+      console.log(this.timeLeft);
     }, 2000);
   }
 

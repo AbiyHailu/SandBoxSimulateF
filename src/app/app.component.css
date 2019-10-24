@@ -1,10 +1,9 @@
-.container-fluid {
-  background: green;
+html,
+body {
   height: 100% !important;
-  overflow-y: hidden;
 }
-.fill-height {
-  background: green;
-  min-height: 100% !important;
+
+#yellow {
   height: 100% !important;
+  background: yellow;
 }

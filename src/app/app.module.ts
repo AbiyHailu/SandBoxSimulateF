@@ -3,14 +3,10 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { MainComponent } from "./main/main.component";
 import { BeginComponent } from "./begin/begin.component";
-//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, BeginComponent],
-  imports: [
-    BrowserModule
-    //  NgbModule.forRoot(),
-  ],
+  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -39,7 +39,7 @@ export class BeginComponent {
     if ("PlantName" in val) {
       console.log("val", val);
       if (this.gameItem.length > 0) {
-        let ind = this.gameItem.findIndex(e => e.Plant.PlantName);
+        let ind = this.gameItem.findIndex(e => e.Plant);
         this.gameItem.splice(ind, 1);
         this.gameItem.push(val);
       } else {

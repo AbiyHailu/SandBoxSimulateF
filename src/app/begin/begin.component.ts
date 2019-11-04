@@ -7,12 +7,39 @@ import { Component } from "@angular/core";
 })
 export class BeginComponent {
   constructor() {
-    //  this.startTimer();
+    this.selectPlant = true;
+    this.selectPesticide = false;
+    this.selectMarket = false;
   }
 
-  register: boolean;
+  registerOrLogin: boolean;
   selectPlant: boolean;
   selectPesticide: boolean;
   selectMarket: boolean;
+
+  beginArray = [
+    "registerOrLogin",
+    "selectPlant",
+    "selectPesticide",
+    "selectMarket"
+  ];
+
   ngOnInit() {}
+  navigatToNext(val) {
+    if (val === "selectPlant") {
+      this.selectPlant = false;
+      this.selectPesticide = true;
+      this.selectMarket = false;
+    }
+    if (val === "selectPesticide") {
+      this.selectPlant = false;
+      this.selectPesticide = false;
+      this.selectMarket = true;
+    }
+    if (val === "selectMarket") {
+      this.selectPlant = false;
+      this.selectPesticide = false;
+      this.selectMarket = false;
+    }
+  }
 }

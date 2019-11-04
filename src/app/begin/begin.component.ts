@@ -25,7 +25,12 @@ export class BeginComponent {
   ];
 
   ngOnInit() {}
+  index = 0;
   navigatToNext(val) {
+    if (this.beginArray.length >= this.index) {
+      this.index = 1 + this.index;
+    }
+
     if (val === "selectPlant") {
       this.selectPlant = false;
       this.selectPesticide = true;
@@ -40,6 +45,12 @@ export class BeginComponent {
       this.selectPlant = false;
       this.selectPesticide = false;
       this.selectMarket = false;
+    }
+  }
+
+  navigatToPrevious() {
+    if (this.beginArray.length >= this.index) {
+      this.index = 1 + this.index;
     }
   }
 }

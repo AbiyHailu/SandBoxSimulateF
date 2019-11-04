@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { PlantService } from "../services/plant.service";
+import { Plant } from "../model/plant";
 
 @Component({
   selector: "begin",
@@ -6,7 +8,7 @@ import { Component } from "@angular/core";
   styleUrls: ["./begin.component.css"]
 })
 export class BeginComponent {
-  constructor() {
+  constructor(private plantService: PlantService) {
     this.selectPlant = true;
     this.selectPesticide = false;
     this.selectMarket = false;
@@ -23,8 +25,12 @@ export class BeginComponent {
     "selectPesticide",
     "selectMarket"
   ];
+  plants: Plant[];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.plants = this.plantService.getPlants();
+  }
+
   index = 0;
   navigatToNext(val) {
     console.log(this.beginArray.length);

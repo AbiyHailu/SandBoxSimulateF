@@ -7,12 +7,13 @@
   </div>
 
   <div *ngFor="let item of beginArray; let i = index">
-    <div
-      *ngIf="i ==index"
-      class="1"
-      style="background: green; width: 300px; height: 200px;"
-    >
+    <div *ngIf="i ==index" class="rowbegin-item">
       {{i}} {{item}}
+      <div *ngIf="item ==='selectPlant';let ind = index" class="row">
+        <div class="col-lg-4">
+          test {{ind}}
+        </div>
+      </div>
     </div>
   </div>
 </div>

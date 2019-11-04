@@ -10,8 +10,12 @@
     <div *ngIf="i ==index" class="rowbegin-item">
       {{i}} {{item}}
       <div *ngIf="item ==='selectPlant';let ind = index" class="row">
-        <div class="col-lg-4">
-          test {{ind}}
+        <div
+          *ngFor="let plant of plants"
+          class="col-lg-4"
+          (click)="addGameItem(plant)"
+        >
+          {{plant.Name}}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { PlantService } from "../services/plant.service";
 import { Plant } from "../model/plant";
+import { GameItem } from "../model/gameItem";
 
 @Component({
   selector: "begin",
@@ -26,11 +27,17 @@ export class BeginComponent {
     "selectMarket"
   ];
   plants: Plant[];
+  gameItem: GameItem[];
 
   ngOnInit() {
     this.plants = this.plantService.getPlants();
   }
 
+  addGameItem(val) {
+    /*   if(val isType){
+
+    } */
+  }
   index = 0;
   navigatToNext(val) {
     console.log(this.beginArray.length);

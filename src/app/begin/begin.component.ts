@@ -13,6 +13,7 @@ export class BeginComponent {
     this.selectPlant = true;
     this.selectPesticide = false;
     this.selectMarket = false;
+    this.gameItem = [];
   }
 
   registerOrLogin: boolean;
@@ -34,9 +35,17 @@ export class BeginComponent {
   }
 
   addGameItem(val) {
-    /*   if(val isType){
-
-    } */
+    console.log("this.gameItem", this.gameItem);
+    if ("PlantName" in val) {
+      console.log("val", val);
+      if (this.gameItem.length > 0) {
+        let ind = this.gameItem.findIndex(e => e.Plant.PlantName);
+        this.gameItem.splice(ind, 1);
+        this.gameItem.push(val);
+      } else {
+        this.gameItem.push(val);
+      }
+    }
   }
   index = 0;
   navigatToNext(val) {

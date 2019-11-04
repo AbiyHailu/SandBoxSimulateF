@@ -5,12 +5,12 @@ import { Plant } from "../model/plant";
 export class PlantService {
   constructor() {
     this.plants = [
-      { Id: 1, Name: "test1" },
-      { Id: 2, Name: "test2" },
-      { Id: 3, Name: "test3" },
-      { Id: 4, Name: "test4" },
-      { Id: 5, Name: "test5" },
-      { Id: 6, Name: "test6" }
+      { Id: 1, PlantName: "test1" },
+      { Id: 2, PlantName: "test2" },
+      { Id: 3, PlantName: "test3" },
+      { Id: 4, PlantName: "test4" },
+      { Id: 5, PlantName: "test5" },
+      { Id: 6, PlantName: "test6" }
     ];
   }
   plants: Plant[];

@@ -1,4 +1,4 @@
 export interface Pesticide {
   Id: number;
-  Name: string;
+  PesticideName: string;
 }

@@ -1,4 +1,4 @@
 export interface Plant {
   Id: number;
-  Name: string;
+  PlantName: string;
 }

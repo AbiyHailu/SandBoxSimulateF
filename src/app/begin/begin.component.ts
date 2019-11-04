@@ -27,30 +27,18 @@ export class BeginComponent {
   ngOnInit() {}
   index = 0;
   navigatToNext(val) {
-    if (this.beginArray.length >= this.index) {
-      this.index = 1 + this.index;
-    }
-
-    if (val === "selectPlant") {
-      this.selectPlant = false;
-      this.selectPesticide = true;
-      this.selectMarket = false;
-    }
-    if (val === "selectPesticide") {
-      this.selectPlant = false;
-      this.selectPesticide = false;
-      this.selectMarket = true;
-    }
-    if (val === "selectMarket") {
-      this.selectPlant = false;
-      this.selectPesticide = false;
-      this.selectMarket = false;
+    console.log(this.beginArray.length);
+    console.log(this.index);
+    if (this.beginArray.length - 1 > this.index) {
+      this.index = this.index + 1;
     }
   }
 
   navigatToPrevious() {
-    if (this.beginArray.length >= this.index) {
-      this.index = 1 + this.index;
+    console.log(this.beginArray.length);
+    console.log(this.index);
+    if (this.index > 0) {
+      this.index = this.index - 1;
     }
   }
 }

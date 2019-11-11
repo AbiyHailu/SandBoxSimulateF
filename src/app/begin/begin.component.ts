@@ -49,8 +49,8 @@ export class BeginComponent {
 
   addGameItem(val) {
     console.log("this.gameItem", this.gameItem);
+    console.log("val", val);
     if ("PlantName" in val) {
-      console.log("val", val);
       if (this.gameItem.length > 0) {
         let ind = this.gameItem.findIndex(e => e.Plant);
         this.gameItem.splice(ind, 1);
@@ -59,7 +59,28 @@ export class BeginComponent {
         this.gameItem.push(val);
       }
     }
+
+    if ("PesticideName" in val) {
+      if (this.gameItem.length > 0) {
+        let ind = this.gameItem.findIndex(e => e.Pesticide);
+        this.gameItem.splice(ind, 1);
+        this.gameItem.push(val);
+      } else {
+        this.gameItem.push(val);
+      }
+    }
+
+    if ("MarketName" in val) {
+      if (this.gameItem.length > 0) {
+        let ind = this.gameItem.findIndex(e => e.Market);
+        this.gameItem.splice(ind, 1);
+        this.gameItem.push(val);
+      } else {
+        this.gameItem.push(val);
+      }
+    }
   }
+
   index = 0;
   navigatToNext(val) {
     console.log(this.beginArray.length);

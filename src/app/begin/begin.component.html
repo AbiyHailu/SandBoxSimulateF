@@ -1,30 +1,30 @@
-<div class="row text-center ">
-  <div
-    class="right-nav"
-    style="background: rgba(152, 214, 152, 0.246); width: 50px; height: 50px;"
-  >
+<div class="row text-center">
+  <div class=" col-2 col-lg-2 right-nav">
     <i class="fas fa-caret-left" (click)="navigatToPrevious()"></i>
   </div>
+  <div class="col-8 col-lg-8">
+    <div class="row" *ngFor="let item of beginArray; let i = index">
+      <div *ngIf="i==index" class="col-lg-12 begin-item">
+        <div class="row text-center">
+          <div class="col-12 text-center">
+            {{i}} {{item}}
+          </div>
+        </div>
 
-  <div *ngFor="let item of beginArray; let i = index">
-    <div *ngIf="i ==index" class="rowbegin-item">
-      {{i}} {{item}}
-      <div *ngIf="item ==='selectPlant';let ind = index" class="row">
-        <div
-          *ngFor="let plant of plants"
-          class="col-lg-4"
-          (click)="addGameItem(plant)"
-        >
-          {{plant.PlantName}}
+        <div *ngIf="item ==='selectPlant';let ind = index" class="row h-100">
+          <div
+            class="col-4 text-center col-lg-4"
+            *ngFor="let plant of plants"
+            (click)="addGameItem(plant)"
+          >
+            {{plant.PlantName}}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div
-  class="left-nav"
-  style="background: rgba(152, 214, 152, 0.246); width: 50px; height: 50px;"
->
-  <i class="fas fa-caret-right" (click)="navigatToNext()"></i>
+  <div class="col-2 col-lg-2 left-nav">
+    <i class="fas fa-caret-right" (click)="navigatToNext()"></i>
+  </div>
 </div>

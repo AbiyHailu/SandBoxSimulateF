@@ -28,9 +28,19 @@
           <div
             class="col-4 text-center col-lg-4"
             *ngFor="let pesticide of pesticides"
-            (click)="addGameItem(plant)"
+            (click)="addGameItem(pesticide)"
           >
             {{pesticide.PesticideName}}
+          </div>
+        </div>
+
+        <div *ngIf="item ==='selectMarket';let ind = index" class="row h-100">
+          <div
+            class="col-4 text-center col-lg-4"
+            *ngFor="let market of markets"
+            (click)="addGameItem(market)"
+          >
+            {{market.MarketName}}
           </div>
         </div>
       </div>

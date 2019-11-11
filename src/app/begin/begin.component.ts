@@ -4,6 +4,8 @@ import { Plant } from "../model/plant";
 import { GameItem } from "../model/gameItem";
 import { Pesticide } from "../model/pesticide";
 import { PesticideService } from "../services/pesticide.service";
+import { Market } from "../model/market";
+import { MarketService } from "../services/market.service";
 
 @Component({
   selector: "begin",
@@ -13,7 +15,8 @@ import { PesticideService } from "../services/pesticide.service";
 export class BeginComponent {
   constructor(
     private plantService: PlantService,
-    private pesticideService: PesticideService
+    private pesticideService: PesticideService,
+    private marketService: MarketService
   ) {
     this.selectPlant = true;
     this.selectPesticide = false;
@@ -35,11 +38,13 @@ export class BeginComponent {
 
   plants: Plant[];
   pesticides: Pesticide[];
+  markets: Market[];
   gameItem: GameItem[];
 
   ngOnInit() {
     this.plants = this.plantService.getPlants();
     this.pesticides = this.pesticideService.getPesticides();
+    this.markets = this.marketService.getMarkets();
   }
 
   addGameItem(val) {

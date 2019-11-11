@@ -20,6 +20,19 @@
             {{plant.PlantName}}
           </div>
         </div>
+
+        <div
+          *ngIf="item ==='selectPesticide';let ind = index"
+          class="row h-100"
+        >
+          <div
+            class="col-4 text-center col-lg-4"
+            *ngFor="let pesticide of pesticides"
+            (click)="addGameItem(plant)"
+          >
+            {{pesticide.PesticideName}}
+          </div>
+        </div>
       </div>
     </div>
   </div>

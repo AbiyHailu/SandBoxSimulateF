@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { PlantService } from "../services/plant.service";
 import { Plant } from "../model/plant";
 import { GameItem } from "../model/gameItem";
+import { Pesticide } from "../model/pesticide";
+import { PesticideService } from "../services/pesticide.service";
 
 @Component({
   selector: "begin",
@@ -9,7 +11,10 @@ import { GameItem } from "../model/gameItem";
   styleUrls: ["./begin.component.css"]
 })
 export class BeginComponent {
-  constructor(private plantService: PlantService) {
+  constructor(
+    private plantService: PlantService,
+    private pesticideService: PesticideService
+  ) {
     this.selectPlant = true;
     this.selectPesticide = false;
     this.selectMarket = false;
@@ -27,11 +32,14 @@ export class BeginComponent {
     "selectPesticide",
     "selectMarket"
   ];
+
   plants: Plant[];
+  pesticides: Pesticide[];
   gameItem: GameItem[];
 
   ngOnInit() {
     this.plants = this.plantService.getPlants();
+    this.pesticides = this.pesticideService.getPesticides();
   }
 
   addGameItem(val) {

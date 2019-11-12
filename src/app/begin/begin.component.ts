@@ -22,7 +22,7 @@ export class BeginComponent {
     this.selectPesticide = false;
     this.selectMarket = false;
     this.gameItem = [];
-    this.simulationReady = false;
+    this.simulationReady = true;
   }
 
   registerOrLogin: boolean;
@@ -51,11 +51,9 @@ export class BeginComponent {
 
   addGameItem(val) {
     console.log("this.gameItem", this.gameItem);
-    console.log("val", val);
     if ("PlantName" in val) {
       if (this.gameItem.length > 0) {
         let ind = this.gameItem.find(e => e["PlantName"]);
-        console.log("ind", ind);
         if (ind) {
           let i = this.gameItem.findIndex(e => e["PlantName"]);
           this.gameItem.splice(i, 1);
@@ -97,10 +95,13 @@ export class BeginComponent {
         this.gameItem.push(val);
       }
     }
+    console.log("this.gameItem", this.gameItem.length);
     if (this.gameItem.length === 3) {
       this.simulationReady = false;
+      console.log(this.simulationReady);
     } else {
       this.simulationReady = true;
+      console.log(this.simulationReady);
     }
   }
 
@@ -112,10 +113,11 @@ export class BeginComponent {
   }
 
   navigatToPrevious() {
-    console.log(this.beginArray.length);
-    console.log(this.index);
     if (this.index > 0) {
       this.index = this.index - 1;
     }
+  }
+  begin() {
+    console.log("begin", this.simulationReady);
   }
 }

@@ -6,6 +6,7 @@ import { Pesticide } from "../model/pesticide";
 import { PesticideService } from "../services/pesticide.service";
 import { Market } from "../model/market";
 import { MarketService } from "../services/market.service";
+import { SharedDataService } from "../services/sharedData.service";
 
 @Component({
   selector: "begin",
@@ -16,7 +17,8 @@ export class BeginComponent {
   constructor(
     private plantService: PlantService,
     private pesticideService: PesticideService,
-    private marketService: MarketService
+    private marketService: MarketService,
+    private sharedDataService: SharedDataService
   ) {
     this.selectPlant = true;
     this.selectPesticide = false;
@@ -119,5 +121,7 @@ export class BeginComponent {
   }
   begin() {
     console.log("begin", this.simulationReady);
+    this.sharedDataService.changeBeginStatus(false);
+    this.sharedDataService.changeMainStatus(true);
   }
 }

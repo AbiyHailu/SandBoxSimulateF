@@ -43,6 +43,17 @@
             {{market.MarketName}}
           </div>
         </div>
+
+        <div
+          *ngIf="item ==='beginSimulation';let ind = index"
+          class="row h-100"
+        >
+          <div class="col-12 text-center col-lg-12">
+            <button [disabled]="simulationReady" class="btn">
+              Begin Simulation
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

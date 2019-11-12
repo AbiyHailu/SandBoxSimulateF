@@ -22,6 +22,7 @@ export class BeginComponent {
     this.selectPesticide = false;
     this.selectMarket = false;
     this.gameItem = [];
+    this.simulationReady = false;
   }
 
   registerOrLogin: boolean;
@@ -33,14 +34,15 @@ export class BeginComponent {
     "registerOrLogin",
     "selectPlant",
     "selectPesticide",
-    "selectMarket"
+    "selectMarket",
+    "beginSimulation"
   ];
 
   plants: Plant[];
   pesticides: Pesticide[];
   markets: Market[];
   gameItem: GameItem[];
-
+  simulationReady: boolean;
   ngOnInit() {
     this.plants = this.plantService.getPlants();
     this.pesticides = this.pesticideService.getPesticides();
@@ -52,9 +54,15 @@ export class BeginComponent {
     console.log("val", val);
     if ("PlantName" in val) {
       if (this.gameItem.length > 0) {
-        let ind = this.gameItem.findIndex(e => e.Plant);
-        this.gameItem.splice(ind, 1);
-        this.gameItem.push(val);
+        let ind = this.gameItem.find(e => e["PlantName"]);
+        console.log("ind", ind);
+        if (ind) {
+          let i = this.gameItem.findIndex(e => e["PlantName"]);
+          this.gameItem.splice(i, 1);
+          this.gameItem.push(val);
+        } else {
+          this.gameItem.push(val);
+        }
       } else {
         this.gameItem.push(val);
       }
@@ -62,9 +70,14 @@ export class BeginComponent {
 
     if ("PesticideName" in val) {
       if (this.gameItem.length > 0) {
-        let ind = this.gameItem.findIndex(e => e.Pesticide);
-        this.gameItem.splice(ind, 1);
-        this.gameItem.push(val);
+        let ind = this.gameItem.find(e => e["PesticideName"]);
+        if (ind) {
+          let i = this.gameItem.findIndex(e => e["PesticideName"]);
+          this.gameItem.splice(i, 1);
+          this.gameItem.push(val);
+        } else {
+          this.gameItem.push(val);
+        }
       } else {
         this.gameItem.push(val);
       }
@@ -72,19 +85,27 @@ export class BeginComponent {
 
     if ("MarketName" in val) {
       if (this.gameItem.length > 0) {
-        let ind = this.gameItem.findIndex(e => e.Market);
-        this.gameItem.splice(ind, 1);
-        this.gameItem.push(val);
+        let ind = this.gameItem.find(e => e["MarketName"]);
+        if (ind) {
+          let i = this.gameItem.findIndex(e => e["MarketName"]);
+          this.gameItem.splice(i, 1);
+          this.gameItem.push(val);
+        } else {
+          this.gameItem.push(val);
+        }
       } else {
         this.gameItem.push(val);
       }
+    }
+    if (this.gameItem.length === 3) {
+      this.simulationReady = false;
+    } else {
+      this.simulationReady = true;
     }
   }
 
   index = 0;
   navigatToNext(val) {
-    console.log(this.beginArray.length);
-    console.log(this.index);
     if (this.beginArray.length - 1 > this.index) {
       this.index = this.index + 1;
     }

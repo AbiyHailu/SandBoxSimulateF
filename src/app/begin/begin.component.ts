@@ -23,7 +23,7 @@ export class BeginComponent {
     this.selectPlant = true;
     this.selectPesticide = false;
     this.selectMarket = false;
-    this.gameItem = [];
+    this.simulationItem = [];
     this.simulationReady = true;
   }
 
@@ -43,7 +43,7 @@ export class BeginComponent {
   plants: Plant[];
   pesticides: Pesticide[];
   markets: Market[];
-  gameItem: GameItem[];
+  simulationItem: GameItem[];
   simulationReady: boolean;
   ngOnInit() {
     this.plants = this.plantService.getPlants();
@@ -52,58 +52,55 @@ export class BeginComponent {
   }
 
   addGameItem(val) {
-    console.log("this.gameItem", this.gameItem);
     if ("PlantName" in val) {
-      if (this.gameItem.length > 0) {
-        let ind = this.gameItem.find(e => e["PlantName"]);
+      if (this.simulationItem.length > 0) {
+        let ind = this.simulationItem.find(e => e["PlantName"]);
         if (ind) {
-          let i = this.gameItem.findIndex(e => e["PlantName"]);
-          this.gameItem.splice(i, 1);
-          this.gameItem.push(val);
+          let i = this.simulationItem.findIndex(e => e["PlantName"]);
+          this.simulationItem.splice(i, 1);
+          this.simulationItem.push(val);
         } else {
-          this.gameItem.push(val);
+          this.simulationItem.push(val);
         }
       } else {
-        this.gameItem.push(val);
+        this.simulationItem.push(val);
       }
     }
 
     if ("PesticideName" in val) {
-      if (this.gameItem.length > 0) {
-        let ind = this.gameItem.find(e => e["PesticideName"]);
+      if (this.simulationItem.length > 0) {
+        let ind = this.simulationItem.find(e => e["PesticideName"]);
         if (ind) {
-          let i = this.gameItem.findIndex(e => e["PesticideName"]);
-          this.gameItem.splice(i, 1);
-          this.gameItem.push(val);
+          let i = this.simulationItem.findIndex(e => e["PesticideName"]);
+          this.simulationItem.splice(i, 1);
+          this.simulationItem.push(val);
         } else {
-          this.gameItem.push(val);
+          this.simulationItem.push(val);
         }
       } else {
-        this.gameItem.push(val);
+        this.simulationItem.push(val);
       }
     }
 
     if ("MarketName" in val) {
-      if (this.gameItem.length > 0) {
-        let ind = this.gameItem.find(e => e["MarketName"]);
+      if (this.simulationItem.length > 0) {
+        let ind = this.simulationItem.find(e => e["MarketName"]);
         if (ind) {
-          let i = this.gameItem.findIndex(e => e["MarketName"]);
-          this.gameItem.splice(i, 1);
-          this.gameItem.push(val);
+          let i = this.simulationItem.findIndex(e => e["MarketName"]);
+          this.simulationItem.splice(i, 1);
+          this.simulationItem.push(val);
         } else {
-          this.gameItem.push(val);
+          this.simulationItem.push(val);
         }
       } else {
-        this.gameItem.push(val);
+        this.simulationItem.push(val);
       }
     }
-    console.log("this.gameItem", this.gameItem.length);
-    if (this.gameItem.length === 3) {
+
+    if (this.simulationItem.length === 3) {
       this.simulationReady = false;
-      console.log(this.simulationReady);
     } else {
       this.simulationReady = true;
-      console.log(this.simulationReady);
     }
   }
 
@@ -120,8 +117,8 @@ export class BeginComponent {
     }
   }
   begin() {
-    console.log("begin", this.simulationReady);
     this.sharedDataService.changeBeginStatus(false);
     this.sharedDataService.changeMainStatus(true);
+    this.sharedDataService.changeSimulationItemStatus(this.simulationItem);
   }
 }

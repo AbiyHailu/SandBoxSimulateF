@@ -14,4 +14,10 @@ export class SharedDataService {
   changeMainStatus(main: boolean) {
     this._mainSource.next(main);
   }
+
+  private _simulationItemSource = new BehaviorSubject<Array<any>>([]);
+  _currentSimulationItem = this._simulationItemSource.asObservable();
+  changeSimulationItemStatus(simulationItem:Array<any>) {
+    this._simulationItemSource.next(simulationItem);
+  }
 }

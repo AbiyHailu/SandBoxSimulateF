@@ -1,12 +1,24 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
+import { Subject } from "rxjs";
+import { SharedDataService } from "../services/sharedData.service";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "main",
   templateUrl: "./main.component.html",
   styleUrls: ["./main.component.css"]
 })
-export class MainComponent {
-  constructor() {
+export class MainComponent implements OnDestroy {
+  unsubscribe: Subject<void> = new Subject();
+  simulationItems: any;
+  constructor(private sharedDataService: SharedDataService) {
+    this.sharedDataService._currentSimulationItem
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(res => {
+        this.simulationItems = res;
+        console.log("this.gameItem", this.simulationItems);
+      });
+
     //  this.startTimer();
   }
 
@@ -27,5 +39,9 @@ export class MainComponent {
 
   pauseTimer() {
     clearInterval(this.interval);
+  }
+  ngOnDestroy() {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }

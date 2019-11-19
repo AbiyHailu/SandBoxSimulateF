@@ -11,15 +11,17 @@ import { takeUntil } from "rxjs/operators";
 export class MainComponent implements OnDestroy {
   unsubscribe: Subject<void> = new Subject();
   simulationItems: any;
+  plantAge;
   constructor(private sharedDataService: SharedDataService) {
     this.sharedDataService._currentSimulationItem
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(res => {
         this.simulationItems = res;
         console.log("this.gameItem", this.simulationItems);
+        this.plantAge = this.simulationItems.filter(e => e.Age)[0].Age;
+        console.log("plantAge", this.plantAge);
+        this.startTimer();
       });
-
-    //  this.startTimer();
   }
 
   ngOnInit() {}
@@ -28,12 +30,12 @@ export class MainComponent implements OnDestroy {
   interval;
   startTimer() {
     this.interval = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft--;
+      if (this.plantAge > 0) {
+        this.plantAge--;
       } else {
-        this.timeLeft = 60;
+        this.plantAge = 60;
       }
-      console.log(this.timeLeft);
+      console.log(this.plantAge);
     }, 2000);
   }
 

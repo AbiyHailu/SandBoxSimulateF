@@ -22,13 +22,13 @@ export class MainComponent implements OnDestroy {
     private commonFnService: CommonFnService
   ) {
     this.pests = this.pestService.getPests();
-    this.initalizPests();
 
     this.sharedDataService._currentSimulationItem
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(res => {
         this.simulationItems = res;
         this.plantAge = this.simulationItems.filter(e => e.Age)[0].Age;
+        this.initalizPests();
         this.startTimer();
       });
   }
@@ -53,7 +53,7 @@ export class MainComponent implements OnDestroy {
     clearInterval(this.interval);
   }
 
-  pestPopln = [{ Pest: "", initPolpn: 0, currentPopln: 0 }];
+  pestPopln = [];
   initalizPests() {
     this.pestPopln.push(
       {
@@ -77,6 +77,7 @@ export class MainComponent implements OnDestroy {
         currentPopln: 0
       }
     );
+    console.log(this.pestPopln);
   }
 
   computePestCurrentPopuln() {
@@ -86,8 +87,7 @@ export class MainComponent implements OnDestroy {
           element.initPolpn * this.pests[key].ReproductionRate;
       } else {
         element.currentPopln =
-          element.currentPopln +
-          element.initPolpn * this.pests[key].ReproductionRate;
+          element.currentPopln * this.pests[key].ReproductionRate;
       }
     });
   }

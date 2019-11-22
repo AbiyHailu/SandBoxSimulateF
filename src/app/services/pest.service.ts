@@ -9,25 +9,25 @@ export class PestService {
         Id: 1,
         PestName: "Pest 1",
         DamageToQuality: 2.1,
-        ReproductionRate: 1.2
+        ReproductionRate: 1.07
       },
       {
         Id: 2,
         PestName: "Pest 2",
         DamageToQuality: 1.1,
-        ReproductionRate: 0.8
+        ReproductionRate: 1.04
       },
       {
         Id: 3,
         PestName: "Pest 3",
         DamageToQuality: 1.6,
-        ReproductionRate: 1.3
+        ReproductionRate: 1.03
       },
       {
         Id: 4,
         PestName: "Pest 4",
         DamageToQuality: 2.4,
-        ReproductionRate: 1.5
+        ReproductionRate: 1.06
       }
     ];
   }

@@ -17,9 +17,7 @@ export class MainComponent implements OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(res => {
         this.simulationItems = res;
-        console.log("this.gameItem", this.simulationItems);
         this.plantAge = this.simulationItems.filter(e => e.Age)[0].Age;
-        console.log("plantAge", this.plantAge);
         this.startTimer();
       });
   }

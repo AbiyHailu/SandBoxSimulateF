@@ -6,12 +6,21 @@ import { BeginComponent } from "./begin/begin.component";
 import { PlantService } from "./services/plant.service";
 import { PesticideService } from "./services/pesticide.service";
 import { MarketService } from "./services/market.service";
+import { PestService } from "./services/pest.service";
+import { CommonFnService } from "./services/commonFn.service";
 import { SharedDataService } from "./services/sharedData.service";
 
 @NgModule({
   declarations: [AppComponent, MainComponent, BeginComponent],
   imports: [BrowserModule],
-  providers: [SharedDataService, PlantService, PesticideService, MarketService],
+  providers: [
+    SharedDataService,
+    PlantService,
+    PesticideService,
+    MarketService,
+    PestService,
+    CommonFnService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

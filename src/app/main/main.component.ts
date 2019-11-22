@@ -21,18 +21,19 @@ export class MainComponent implements OnDestroy {
     private sharedDataService: SharedDataService,
     private commonFnService: CommonFnService
   ) {
+    this.pests = this.pestService.getPests();
+    this.initalizPests();
+
     this.sharedDataService._currentSimulationItem
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(res => {
         this.simulationItems = res;
         this.plantAge = this.simulationItems.filter(e => e.Age)[0].Age;
-        //this.startTimer();
+        this.startTimer();
       });
   }
 
-  ngOnInit() {
-    this.pests = this.pestService.getPests();
-  }
+  ngOnInit() {}
 
   timeLeft: number = 60;
   interval;
@@ -44,6 +45,7 @@ export class MainComponent implements OnDestroy {
         this.plantAge = 60;
       }
       console.log(this.plantAge);
+      this.computePestCurrentPopuln();
     }, 2000);
   }
 

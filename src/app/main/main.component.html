@@ -1,3 +1,8 @@
 <div class="col-10 col-sm-10 col-md-10 col-lg-8 col-xl-8">
   <p>{{plantAge}} Days Left....</p>
+
+  <div *ngFor="let pest of pestPopln ">
+    <p>{{pest.Pest}}</p>
+    <p>{{pest.currentPopln}}</p>
+  </div>
 </div>

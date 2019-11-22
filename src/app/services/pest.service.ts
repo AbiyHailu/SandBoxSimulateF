@@ -32,7 +32,7 @@ export class PestService {
     ];
   }
   pest: Pest[];
-  getPesticides() {
+  getPests() {
     return this.pest;
   }
 }

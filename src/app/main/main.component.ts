@@ -2,6 +2,9 @@ import { Component, OnDestroy } from "@angular/core";
 import { Subject } from "rxjs";
 import { SharedDataService } from "../services/sharedData.service";
 import { takeUntil } from "rxjs/operators";
+import { PestService } from "../services/pest.service";
+import { Pest } from "../model/pest";
+import { CommonFnService } from "../services/commonFn.service";
 
 @Component({
   selector: "main",
@@ -12,17 +15,24 @@ export class MainComponent implements OnDestroy {
   unsubscribe: Subject<void> = new Subject();
   simulationItems: any;
   plantAge;
-  constructor(private sharedDataService: SharedDataService) {
+  pests: Pest[];
+  constructor(
+    private pestService: PestService,
+    private sharedDataService: SharedDataService,
+    private commonFnService: CommonFnService
+  ) {
     this.sharedDataService._currentSimulationItem
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(res => {
         this.simulationItems = res;
         this.plantAge = this.simulationItems.filter(e => e.Age)[0].Age;
-        this.startTimer();
+        //this.startTimer();
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.pests = this.pestService.getPests();
+  }
 
   timeLeft: number = 60;
   interval;
@@ -40,6 +50,40 @@ export class MainComponent implements OnDestroy {
   pauseTimer() {
     clearInterval(this.interval);
   }
+
+  pestPopln = [{ Pest: "", initPolpn: 0, currentPopln: 0 }];
+  initalizPests() {
+    this.pestPopln.push(
+      {
+        Pest: this.pests[0].PestName,
+        initPolpn: this.commonFnService.getRandomInt(10),
+        currentPopln: 0
+      },
+      {
+        Pest: this.pests[1].PestName,
+        initPolpn: this.commonFnService.getRandomInt(10),
+        currentPopln: 0
+      },
+      {
+        Pest: this.pests[2].PestName,
+        initPolpn: this.commonFnService.getRandomInt(10),
+        currentPopln: 0
+      },
+      {
+        Pest: this.pests[3].PestName,
+        initPolpn: this.commonFnService.getRandomInt(10),
+        currentPopln: 0
+      }
+    );
+  }
+
+  computePestCurrentPopuln() {
+    this.pestPopln.forEach((element, key) => {
+      element.currentPopln =
+        element.initPolpn * this.pests[key].ReproductionRate;
+    });
+  }
+
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();

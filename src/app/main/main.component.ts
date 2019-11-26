@@ -35,14 +35,14 @@ export class MainComponent implements OnDestroy {
 
   ngOnInit() {}
 
-  timeLeft: number = 60;
   interval;
   startTimer() {
     this.interval = setInterval(() => {
       if (this.plantAge > 0) {
         this.plantAge--;
       } else {
-        this.plantAge = 60;
+        clearInterval(this.interval);
+        // this.plantAge = 60;
       }
       console.log(this.plantAge);
       this.computePestCurrentPopuln();

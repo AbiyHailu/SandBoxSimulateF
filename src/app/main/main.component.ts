@@ -84,10 +84,14 @@ export class MainComponent implements OnDestroy {
     this.pestPopln.forEach((element, key) => {
       if (element.currentPopln === 0) {
         element.currentPopln =
-          element.initPolpn * this.pests[key].ReproductionRate;
+          Math.round(
+            element.initPolpn * this.pests[key].ReproductionRate * 100
+          ) / 10;
       } else {
         element.currentPopln =
-          element.currentPopln * this.pests[key].ReproductionRate;
+          Math.round(
+            element.currentPopln * this.pests[key].ReproductionRate * 100
+          ) / 100;
       }
     });
   }

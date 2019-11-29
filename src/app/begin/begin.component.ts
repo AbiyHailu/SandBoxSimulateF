@@ -21,7 +21,6 @@ export class BeginComponent {
     private sharedDataService: SharedDataService
   ) {
     this.selectPlant = true;
-    this.selectPesticide = false;
     this.selectMarket = false;
     this.simulationItem = [];
     this.simulationReady = true;
@@ -29,13 +28,11 @@ export class BeginComponent {
 
   registerOrLogin: boolean;
   selectPlant: boolean;
-  selectPesticide: boolean;
   selectMarket: boolean;
 
   beginArray = [
     "registerOrLogin",
     "selectPlant",
-    "selectPesticide",
     "selectMarket",
     "beginSimulation"
   ];
@@ -67,21 +64,6 @@ export class BeginComponent {
       }
     }
 
-    if ("PesticideName" in val) {
-      if (this.simulationItem.length > 0) {
-        let ind = this.simulationItem.find(e => e["PesticideName"]);
-        if (ind) {
-          let i = this.simulationItem.findIndex(e => e["PesticideName"]);
-          this.simulationItem.splice(i, 1);
-          this.simulationItem.push(val);
-        } else {
-          this.simulationItem.push(val);
-        }
-      } else {
-        this.simulationItem.push(val);
-      }
-    }
-
     if ("MarketName" in val) {
       if (this.simulationItem.length > 0) {
         let ind = this.simulationItem.find(e => e["MarketName"]);
@@ -97,7 +79,7 @@ export class BeginComponent {
       }
     }
 
-    if (this.simulationItem.length === 3) {
+    if (this.simulationItem.length === 2) {
       this.simulationReady = false;
     } else {
       this.simulationReady = true;

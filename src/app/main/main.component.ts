@@ -115,6 +115,17 @@ export class MainComponent implements OnDestroy {
     console.log(this.pestPopln);
     console.log(this.pests);
   }
+  openNav() {
+    document.getElementById("sidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    console.log(document.getElementById("main").style.marginLeft);
+  }
+
+  closeNav() {
+    document.getElementById("sidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();

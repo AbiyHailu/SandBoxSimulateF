@@ -44,9 +44,8 @@ export class MainComponent implements OnDestroy {
         clearInterval(this.interval);
         // this.plantAge = 60;
       }
-      console.log(this.plantAge);
       this.computePestCurrentPopuln();
-    }, 2000);
+    }, 10000);
   }
 
   pauseTimer() {
@@ -57,27 +56,31 @@ export class MainComponent implements OnDestroy {
   initalizPests() {
     this.pestPopln.push(
       {
+        PestId: this.pests[0].Id,
         Pest: this.pests[0].PestName,
         initPolpn: this.commonFnService.getRandomInt(10),
         currentPopln: 0
       },
       {
+        PestId: this.pests[1].Id,
         Pest: this.pests[1].PestName,
         initPolpn: this.commonFnService.getRandomInt(10),
         currentPopln: 0
       },
       {
+        PestId: this.pests[2].Id,
         Pest: this.pests[2].PestName,
         initPolpn: this.commonFnService.getRandomInt(10),
         currentPopln: 0
       },
-      {
+      {     
+        PestId: this.pests[3].Id,
         Pest: this.pests[3].PestName,
         initPolpn: this.commonFnService.getRandomInt(10),
         currentPopln: 0
       }
     );
-    console.log(this.pestPopln);
+   // console.log(this.pestPopln);
   }
 
   computePestCurrentPopuln() {
@@ -96,6 +99,19 @@ export class MainComponent implements OnDestroy {
     });
   }
 
+TakeMeasure(){
+  //resoure id create a select esource methode, open stor from side show stock and purpose 
+  //select resource + enter amount 
+  //for now test resource 
+  let resourceId = 2;
+ this.pestPopln.forEach(element =>{
+   element.currentPopln =this.commonFn.getImpactOnPest(element.PestId, element.pestPopln, resourceId)
+
+ })
+
+ console.log(this.pestPopln) 
+ console.log(this.pests)
+}
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();

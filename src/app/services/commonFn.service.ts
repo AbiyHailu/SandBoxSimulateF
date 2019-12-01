@@ -3,65 +3,66 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class CommonFnService {
   getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
+    return Math.floor(Math.random() * max) + 1;
   }
 
   getImpactOnPest(pestId: number, popln: number, resourceId: number) {
+    console.log(pestId, popln, resourceId);
     if (pestId === 1) {
       if (resourceId === 1) {
-        return popln - popln * 0.2;
+        return popln * 0.2;
       } else if (resourceId === 2) {
-        return popln - popln * 0.1;
+        return popln * 0.1;
       } else if (resourceId === 3) {
-        return popln - popln * 0;
+        return popln;
       } else if (resourceId === 4) {
-        return popln - popln * 0.3;
+        return popln * 0.3;
       } else if (resourceId === 5) {
-        return popln - popln * 0;
+        return popln;
       } else if (resourceId === 6) {
-        return popln - popln * 0.2;
+        return popln * 0.2;
       }
     } else if (pestId === 2) {
       if (resourceId === 1) {
-        return popln - popln * 0.1;
+        return popln * 0.1;
       } else if (resourceId === 2) {
-        return popln - popln * 0;
+        return popln;
       } else if (resourceId === 3) {
-        return popln - popln * 0;
+        return popln;
       } else if (resourceId === 4) {
-        return popln - popln * 0.3;
+        return popln * 0.3;
       } else if (resourceId === 5) {
-        return popln - popln * 0.2;
+        return popln * 0.2;
       } else if (resourceId === 6) {
-        return popln - popln * 0.1;
+        return popln * 0.1;
       }
-    } else if (pestId === 1) {
+    } else if (pestId === 3) {
       if (resourceId === 1) {
-        return popln - popln * 0;
+        return popln * 0;
       } else if (resourceId === 2) {
-        return popln - popln * 0.2;
+        return popln * 0.2;
       } else if (resourceId === 3) {
-        return popln - popln * 0.3;
+        return popln * 0.3;
       } else if (resourceId === 4) {
-        return popln - popln * 0;
+        return popln;
       } else if (resourceId === 5) {
-        return popln - popln * 0;
+        return popln;
       } else if (resourceId === 6) {
-        return popln - popln * 0;
+        return popln;
       }
     } else if (pestId === 4) {
       if (resourceId === 1) {
-        return popln - popln * 0.1;
+        return popln * 0.1;
       } else if (resourceId === 2) {
-        return popln - popln * 0.4;
+        return popln * 0.4;
       } else if (resourceId === 3) {
-        return popln - popln * 0;
+        return popln;
       } else if (resourceId === 4) {
-        return popln - popln * 0.5;
+        return popln * 0.5;
       } else if (resourceId === 5) {
-        return popln - popln * 0.2;
+        return popln * 0.2;
       } else if (resourceId === 6) {
-        return popln - popln * 0;
+        return popln;
       }
     }
   }
@@ -108,7 +109,7 @@ export class CommonFnService {
     } else if (resourceId === 5) {
       return 1.1 * QualityExp;
     } else if (resourceId === 6) {
-      return 0* QualityExp;
+      return 0 * QualityExp;
     }
   }
 }

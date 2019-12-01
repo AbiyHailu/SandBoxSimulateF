@@ -5,6 +5,7 @@ import { takeUntil } from "rxjs/operators";
 import { PestService } from "../services/pest.service";
 import { Pest } from "../model/pest";
 import { CommonFnService } from "../services/commonFn.service";
+import { PesticideService } from "../services/pesticide.service";
 
 @Component({
   selector: "main",
@@ -19,7 +20,8 @@ export class MainComponent implements OnDestroy {
   constructor(
     private pestService: PestService,
     private sharedDataService: SharedDataService,
-    private commonFnService: CommonFnService
+    private commonFnService: CommonFnService,
+    private resourceServices: PesticideService;
   ) {
     this.pests = this.pestService.getPests();
 
@@ -46,12 +48,16 @@ export class MainComponent implements OnDestroy {
       }
       this.computePestCurrentPopuln();
     }, 10000);
-  }
 
   pauseTimer() {
     clearInterval(this.interval);
   }
 
+  resources =[]
+  InitializeResources(){
+ this.resourceServices.getPesticides()
+ .pipe(takeUntil(this.unsubscribe))
+  }
   pestPopln = [];
   initalizPests() {
     this.pestPopln.push(
@@ -116,13 +122,15 @@ export class MainComponent implements OnDestroy {
     console.log(this.pests);
   }
   openNav() {
-    document.getElementById("sidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("sidenav").style.width = "20%";
+    //document.getElementById("main").style.width = "80%";
+    document.getElementById("main").style.marginLeft = "20%";
   }
 
   closeNav() {
     document.getElementById("sidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    // document.getElementById("main").style.width = "100%";
+    document.getElementById("main").style.marginLeft = "0%";
   }
 
   ngOnDestroy() {

@@ -118,7 +118,6 @@ export class MainComponent implements OnDestroy {
   openNav() {
     document.getElementById("sidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
-    console.log(document.getElementById("main").style.marginLeft);
   }
 
   closeNav() {

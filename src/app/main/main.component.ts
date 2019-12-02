@@ -5,7 +5,7 @@ import { takeUntil } from "rxjs/operators";
 import { PestService } from "../services/pest.service";
 import { Pest } from "../model/pest";
 import { CommonFnService } from "../services/commonFn.service";
-import { PesticideService } from "../services/pesticide.service";
+import { ResourceService } from "../services/resource.service";
 
 @Component({
   selector: "main",
@@ -16,12 +16,15 @@ export class MainComponent implements OnDestroy {
   unsubscribe: Subject<void> = new Subject();
   simulationItems: any;
   plantAge;
-  pests: Pest[];
+  pests: Pest[];  
+  resources: Resource[];
+  
   constructor(
     private pestService: PestService,
+    private resourceService:ResourceService,
     private sharedDataService: SharedDataService,
     private commonFnService: CommonFnService,
-    private resourceServices: PesticideService;
+  
   ) {
     this.pests = this.pestService.getPests();
 
@@ -48,16 +51,13 @@ export class MainComponent implements OnDestroy {
       }
       this.computePestCurrentPopuln();
     }, 10000);
+  }
 
-  pauseTimer() {
+  pauseTimer(){
     clearInterval(this.interval);
   }
 
-  resources =[]
-  InitializeResources(){
- this.resourceServices.getPesticides()
- .pipe(takeUntil(this.unsubscribe))
-  }
+
   pestPopln = [];
   initalizPests() {
     this.pestPopln.push(

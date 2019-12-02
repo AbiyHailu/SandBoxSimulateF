@@ -1,6 +1,6 @@
-export interface Pesticide {
+export interface Resource {
   Id: number;
-  PesticideName: string;
+  ResourceName: string;
   ProtectionStrength: number; //reduce by percentage currentpopln reduced by x percentage
   EnvtImpact: number;
   Purpose: any;

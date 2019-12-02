@@ -4,7 +4,7 @@ import { AppComponent } from "./app.component";
 import { MainComponent } from "./main/main.component";
 import { BeginComponent } from "./begin/begin.component";
 import { PlantService } from "./services/plant.service";
-import { PesticideService } from "./services/pesticide.service";
+import { ResourceService } from "./services/resource.service";
 import { MarketService } from "./services/market.service";
 import { PestService } from "./services/pest.service";
 import { CommonFnService } from "./services/commonFn.service";
@@ -16,7 +16,7 @@ import { SharedDataService } from "./services/sharedData.service";
   providers: [
     SharedDataService,
     PlantService,
-    PesticideService,
+    ResourceService,
     MarketService,
     PestService,
     CommonFnService

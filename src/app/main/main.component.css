@@ -4,7 +4,7 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  right: 0;
   background-color: rgb(226, 226, 226);
   overflow-x: hidden;
   transition: 0.5s;
@@ -23,9 +23,7 @@
 .sidenav a:hover {
   color: #f1f1f1;
 }
-#sidenav {
-  color: #f1f1f1;
-}
+
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -33,8 +31,22 @@
   font-size: 36px;
   margin-left: 50px;
 }
+
+#sidenav {
+  color: #f1f1f1;
+}
+
 #main {
   transition: margin-left 0.5s;
   transition: width 0.5s;
   padding: 16px;
+}
+.main{
+  transition: margin-left 0.5s;
+  transition: width 0.5s;
+}
+.resources{
+  font-size:12px;
+  cursor:pointer; 
+   float:right
 }

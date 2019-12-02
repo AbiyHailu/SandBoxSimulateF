@@ -50,7 +50,7 @@ export class ResourceService {
     ];
   }
   resource: Resource[];
-  getResource() {
+  getResources() {
     return this.resource;
   }
 }

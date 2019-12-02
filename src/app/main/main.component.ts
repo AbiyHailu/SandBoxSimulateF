@@ -124,13 +124,13 @@ export class MainComponent implements OnDestroy {
   openNav() {
     document.getElementById("sidenav").style.width = "20%";
     //document.getElementById("main").style.width = "80%";
-    document.getElementById("main").style.marginLeft = "20%";
+   // document.getElementById("main").style.marginLeft = "20%";
   }
 
   closeNav() {
     document.getElementById("sidenav").style.width = "0";
     // document.getElementById("main").style.width = "100%";
-    document.getElementById("main").style.marginLeft = "0%";
+    //document.getElementById("main").style.marginLeft = "0%";
   }
 
   ngOnDestroy() {

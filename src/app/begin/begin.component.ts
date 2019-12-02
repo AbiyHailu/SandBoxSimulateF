@@ -2,8 +2,7 @@ import { Component } from "@angular/core";
 import { PlantService } from "../services/plant.service";
 import { Plant } from "../model/plant";
 import { GameItem } from "../model/gameItem";
-import { Pesticide } from "../model/pesticide";
-import { PesticideService } from "../services/pesticide.service";
+import { ResourceService } from "../services/resource.service";
 import { Market } from "../model/market";
 import { MarketService } from "../services/market.service";
 import { SharedDataService } from "../services/sharedData.service";
@@ -16,7 +15,7 @@ import { SharedDataService } from "../services/sharedData.service";
 export class BeginComponent {
   constructor(
     private plantService: PlantService,
-    private pesticideService: PesticideService,
+    private resourceService: ResourceService,
     private marketService: MarketService,
     private sharedDataService: SharedDataService
   ) {
@@ -38,13 +37,13 @@ export class BeginComponent {
   ];
 
   plants: Plant[];
-  pesticides: Pesticide[];
+  resources: Resource[];
   markets: Market[];
   simulationItem: GameItem[];
   simulationReady: boolean;
   ngOnInit() {
     this.plants = this.plantService.getPlants();
-    this.pesticides = this.pesticideService.getPesticides();
+    this.resources = this.resourceService.getResources();
     this.markets = this.marketService.getMarkets();
   }
 

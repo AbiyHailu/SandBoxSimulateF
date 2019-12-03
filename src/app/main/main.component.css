@@ -8,9 +8,9 @@
   background-color: rgb(226, 226, 226);
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px; 
+  padding-top: 60px;
   padding-left: 10px;
-   padding-right: 10px;
+  padding-right: 10px;
 }
 
 .sidenav a {
@@ -43,12 +43,20 @@
   transition: width 0.5s;
   padding: 16px;
 }
-.main{
+.main {
   transition: margin-left 0.5s;
   transition: width 0.5s;
 }
-.resources{
-  font-size:12px;
-  cursor:pointer; 
-  float:right
+.resources {
+  margin-top: 50px;
+  margin-right: -70px;
+  padding: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  float: right;
+  display: block;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  border: 5px solid rgb(5, 5, 5);
 }

@@ -16,19 +16,17 @@ export class MainComponent implements OnDestroy {
   unsubscribe: Subject<void> = new Subject();
   simulationItems: any;
   plantAge;
-  pests: Pest[];  
+  pests: Pest[];
   resources: Resource[];
-  
+
   constructor(
     private pestService: PestService,
-    private resourceService:ResourceService,
+    private resourceService: ResourceService,
     private sharedDataService: SharedDataService,
-    private commonFnService: CommonFnService,
-  
+    private commonFnService: CommonFnService
   ) {
     this.pests = this.pestService.getPests();
-    this.resources = this.resourceService.getResources()
-    console.log(this.resources)
+    this.resources = this.resourceService.getResources();
     this.sharedDataService._currentSimulationItem
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(res => {
@@ -54,10 +52,9 @@ export class MainComponent implements OnDestroy {
     }, 10000);
   }
 
-  pauseTimer(){
+  pauseTimer() {
     clearInterval(this.interval);
   }
-
 
   pestPopln = [];
   initalizPests() {
@@ -87,7 +84,6 @@ export class MainComponent implements OnDestroy {
         currentPopln: 0
       }
     );
-    // console.log(this.pestPopln);
   }
 
   computePestCurrentPopuln() {
@@ -105,35 +101,31 @@ export class MainComponent implements OnDestroy {
       }
     });
   }
- resourceId
+  resourceId;
   TakeMeasure() {
-    this.closeNav()
+    this.closeNav();
     //resoure id create a select esource methode, open stor from side show stock and purpose
     //select resource + enter amount
     //for now test resource
- if( this.resourceId){
- this.pestPopln.forEach((element,key) => {
-      element.currentPopln = this.commonFnService.getImpactOnPest(
-        element.PestId,
-        element.currentPopln,
-        this.resourceId
-      );
-      if(this.pestPopln.length-1===key){
-         this.resourceId =null
-      }
-    });
- }else{
-    alert('Select a resource befor taking measuure.');
- }
-   
-
-    console.log(this.pestPopln);
-    console.log(this.pests);
+    if (this.resourceId) {
+      this.pestPopln.forEach((element, key) => {
+        element.currentPopln = this.commonFnService.getImpactOnPest(
+          element.PestId,
+          element.currentPopln,
+          this.resourceId
+        );
+        if (this.pestPopln.length - 1 === key) {
+          this.resourceId = null;
+        }
+      });
+    } else {
+      alert("Select a resource befor taking measuure.");
+    }
   }
   openNav() {
     document.getElementById("sidenav").style.width = "20%";
     //document.getElementById("main").style.width = "80%";
-   // document.getElementById("main").style.marginLeft = "20%";
+    // document.getElementById("main").style.marginLeft = "20%";
   }
 
   closeNav() {
@@ -141,9 +133,9 @@ export class MainComponent implements OnDestroy {
     // document.getElementById("main").style.width = "100%";
     //document.getElementById("main").style.marginLeft = "0%";
   }
-onItemChange(value){
-this.resourceId =value
-}
+  onItemChange(value) {
+    this.resourceId = value;
+  }
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();

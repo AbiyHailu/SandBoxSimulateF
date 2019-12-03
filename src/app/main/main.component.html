@@ -20,5 +20,9 @@
 </div>
 <div id="sidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  <div *ngFor="let resouce of"></div>
+  <div *ngFor="let resouce of resources">
+  <input type="radio" name="resouces" value="resouce.Id"
+(change)="onItemChange(resouce.Id)"
+  > {{resouce.ResourceName}}<br>
+  </div>
 </div>

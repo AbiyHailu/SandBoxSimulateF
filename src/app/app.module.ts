@@ -9,6 +9,7 @@ import { MarketService } from "./services/market.service";
 import { PestService } from "./services/pest.service";
 import { CommonFnService } from "./services/commonFn.service";
 import { SharedDataService } from "./services/sharedData.service";
+import { ReportService } from "./services/report.service";
 
 @NgModule({
   declarations: [AppComponent, MainComponent, BeginComponent],
@@ -19,6 +20,7 @@ import { SharedDataService } from "./services/sharedData.service";
     ResourceService,
     MarketService,
     PestService,
+    ReportService,
     CommonFnService
   ],
   bootstrap: [AppComponent]
